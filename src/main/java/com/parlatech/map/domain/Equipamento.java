@@ -1,6 +1,5 @@
 package com.parlatech.map.domain;
 
-import org.postgis.Geometry;
 
 import javax.persistence.*;
 import java.io.Serializable;

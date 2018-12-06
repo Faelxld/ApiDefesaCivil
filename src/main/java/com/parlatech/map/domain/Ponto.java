@@ -11,7 +11,6 @@ import java.math.BigDecimal;
 public class Ponto implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idPonto;
     private BigDecimal latitude;
     private BigDecimal longitude;

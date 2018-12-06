@@ -1,8 +1,10 @@
 package com.parlatech.map.resources;
 
 import com.parlatech.map.domain.Equipamento;
+import com.parlatech.map.domain.Ponto;
 import com.parlatech.map.dto.EquipamentoDTO;
 import com.parlatech.map.services.EquipamentoService;
+import com.parlatech.map.services.PontoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +22,8 @@ public class EquipamentoResource {
 
     @Autowired
     private EquipamentoService service;
-
+    @Autowired
+    private PontoService pontoService;
 
 
     @RequestMapping(value="/{id}", method= RequestMethod.GET)
@@ -32,6 +35,8 @@ public class EquipamentoResource {
     @RequestMapping(method=RequestMethod.POST)
     public ResponseEntity<Void> insert(@Valid @RequestBody EquipamentoDTO objDto) {
         Equipamento obj = service.fromDTO(objDto);
+        Ponto ponto = pontoService.salvar(obj.getPonto());
+        obj.setPonto(ponto);
         obj = service.salvar(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}").buildAndExpand(obj.getIdEquipamento()).toUri();

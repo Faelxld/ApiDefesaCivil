@@ -3,6 +3,7 @@ package com.parlatech.map.services;
 import com.parlatech.map.domain.Equipamento;
 import com.parlatech.map.dto.EquipamentoDTO;
 import com.parlatech.map.repositories.EquipamentoRepository;
+import com.parlatech.map.repositories.PontoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @Service
 public class EquipamentoService {
+
     @Autowired
     public EquipamentoRepository repository;
 
@@ -34,6 +36,7 @@ public class EquipamentoService {
     }
 
     public Equipamento salvar(Equipamento equipamento){
+
         return repository.save(equipamento);
     }
 
